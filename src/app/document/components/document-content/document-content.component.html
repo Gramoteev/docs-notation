@@ -1,1 +1,5 @@
-<p>document-content works!</p>
+@for (page of pages; track page) {
+  <div class="page">
+    <img ngSrc="{{page.imageUrl}}" [alt]="page.number" width="794" height="1123" draggable="false">
+  </div>
+}

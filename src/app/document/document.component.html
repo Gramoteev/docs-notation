@@ -1,2 +1,6 @@
-<app-document-header></app-document-header>
-<app-document-content></app-document-content>
+@if (document(); as doc) {
+  <app-document-header [name]="doc.name"></app-document-header>
+  <app-document-content [pages]="doc.pages"></app-document-content>
+} @else {
+  Документ не получен
+}

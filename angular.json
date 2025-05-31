@@ -28,6 +28,12 @@
             "assets": [
               {
                 "glob": "**/*",
+                "input": "src/mocks/assets",
+                "output": ""
+              }
+              ,
+              {
+                "glob": "**/*",
                 "input": "public"
               },
               {
