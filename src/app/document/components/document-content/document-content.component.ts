@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {IPage} from '../../interfaces/document.model';
 import {NgOptimizedImage} from '@angular/common';
 
@@ -8,7 +8,9 @@ import {NgOptimizedImage} from '@angular/common';
     NgOptimizedImage
   ],
   templateUrl: './document-content.component.html',
-  styleUrl: './document-content.component.scss'
+  styleUrl: './document-content.component.scss',
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DocumentContentComponent {
   @Input() pages!: IPage[];
