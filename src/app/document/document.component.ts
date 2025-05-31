@@ -5,12 +5,14 @@ import {ActivatedRoute} from '@angular/router';
 import {DocumentService} from './services/document.service';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {map, switchMap} from 'rxjs';
+import {DocumentNoteComponent} from './components/document-note/document-note.component';
 
 @Component({
   selector: 'app-document',
   imports: [
     DocumentHeaderComponent,
-    DocumentContentComponent
+    DocumentContentComponent,
+    DocumentNoteComponent
   ],
   templateUrl: './document.component.html',
   styleUrl: './document.component.scss',
