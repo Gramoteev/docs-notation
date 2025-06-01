@@ -6,14 +6,13 @@ import {
   Input,
   ViewChild,
   ViewContainerRef,
-  OnDestroy,
 } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { IDocumentType, IPage } from '../../../../interfaces/document.model';
 import { TuiButton, tuiDialog } from '@taiga-ui/core';
 import { DocumentNoteComponent } from './components/document-note/document-note.component';
 import { DocumentNoteDialogComponent } from '../document-note-dialog/document-note-dialog.component';
-import { NoteData, NotesService } from '../../../../services/notes.service';
+import { NotesService } from '../../../../services/notes.service';
 
 @Component({
   selector: 'app-document-page',
@@ -30,8 +29,6 @@ export class DocumentPageComponent {
   @ViewChild('container', { read: ViewContainerRef })
   container!: ViewContainerRef;
 
-  private notes: NoteData[] = [];
-
   constructor(
     private injector: EnvironmentInjector,
     private noteService: NotesService,
@@ -47,16 +44,15 @@ export class DocumentPageComponent {
       const componentRef = createComponent(DocumentNoteComponent, {
         environmentInjector: this.injector,
       });
-      componentRef.instance.content = content;
-      componentRef.instance.viewContainerRef = this.container;
-      componentRef.instance.index = this.notes.length;
-
-      this.container.insert(componentRef.hostView);
-
       this.noteService.addNote({
         content,
         page: this.page.number,
       });
+      componentRef.instance.content = content;
+      componentRef.instance.viewContainerRef = this.container;
+      componentRef.instance.index = this.noteService.getNotes().length;
+
+      this.container.insert(componentRef.hostView);
     });
   }
 }

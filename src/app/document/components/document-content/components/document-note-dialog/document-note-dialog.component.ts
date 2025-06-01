@@ -1,8 +1,13 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { TuiButton, TuiDialogContext, TuiTextfield } from '@taiga-ui/core';
 import { injectContext } from '@taiga-ui/polymorpheus';
 import { TuiTextarea } from '@taiga-ui/kit';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-document-note-dialog',
@@ -14,15 +19,23 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 })
 export class DocumentNoteDialogComponent {
   public readonly context = injectContext<TuiDialogContext<string>>();
-  protected submit(): void {
-    if (this.control.value !== null) {
-      this.context.completeWith(this.control.value);
-    }
-  }
 
-  protected control = new FormControl('');
+  private fb = inject(FormBuilder);
+
+  form: FormGroup = this.fb.group({
+    text: ['', [Validators.required, Validators.minLength(3)]],
+  });
 
   constructor() {
-    this.control.markAsTouched();
+    this.form.markAsTouched();
+  }
+
+  protected submit(): void {
+    if (this.form.valid) {
+      const text = this.form.get('text')?.value;
+      if (text !== null) {
+        this.context.completeWith(text);
+      }
+    }
   }
 }

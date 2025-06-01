@@ -1,5 +1,7 @@
-<tui-textfield [style.margin-block-end.rem]="1">
-  <label tuiLabel>Text</label>
-  <textarea tuiTextarea [formControl]="control" [max]="6" [min]="3"></textarea>
-</tui-textfield>
-<button tuiButton type="button" (click)="submit()">Create</button>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <tui-textfield [style.margin-block.rem]="2">
+    <label tuiLabel>Text</label>
+    <textarea tuiTextarea formControlName="text" [min]="3" [max]="6"></textarea>
+  </tui-textfield>
+  <button tuiButton type="submit" [disabled]="form.invalid">Create</button>
+</form>
