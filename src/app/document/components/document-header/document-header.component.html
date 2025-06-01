@@ -1,14 +1,30 @@
-<header tuiHeader="h3">
-  <hgroup tuiTitle>
-    <h1>{{name}}</h1>
+<header class="header">
+  <hgroup tuiTitle="l">
+    <h1>{{ name }}</h1>
   </hgroup>
-  <aside>
-    <button
-      size="m"
-      tuiButton
-      type="button"
-    >
-      Add note
-    </button>
+  <aside class="aside">
+    <h5 tuiTitle="m">{{ scale() }}</h5>
+
+    <div tuiGroup class="group" [collapsed]="true">
+      <button
+        [disabled]="!canZoomOut()"
+        iconStart="@tui.minus"
+        title="A sample of icon-button in a group"
+        tuiIconButton
+        type="button"
+        size="m"
+        (click)="zoomOut()"
+      ></button>
+      <button
+        [disabled]="!canZoomIn()"
+        iconStart="@tui.plus"
+        title="A sample of icon-button in a group"
+        tuiIconButton
+        type="button"
+        size="m"
+        (click)="zoomIn()"
+      ></button>
+    </div>
+    <button appearance="accent" tuiButton type="button" size="m">Save</button>
   </aside>
 </header>

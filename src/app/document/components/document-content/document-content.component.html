@@ -1,8 +1,5 @@
-@for (page of pages; track page) {
-  <app-document-page
-    class="page"
-    [style.max-width]="imageSize.width"
-    [page]="page"
-    [imageSize]="imageSize"
-  ></app-document-page>
-}
+<div class="pages" [style.width]="currentWidth() + 'px'">
+  @for (page of pages; track page) {
+    <app-document-page [page]="page" [imageSize]="type"></app-document-page>
+  }
+</div>

@@ -3,10 +3,10 @@ import {
   Component,
   inject,
   Input,
-  OnInit,
 } from '@angular/core';
 import { IDocumentType, IPage } from '../../interfaces/document.model';
 import { DocumentPageComponent } from './components/document-page/document-page.component';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { DocumentZoomService } from '../../services/document-zoom.service';
 
 @Component({
@@ -20,14 +20,11 @@ import { DocumentZoomService } from '../../services/document-zoom.service';
 export class DocumentContentComponent {
   @Input() pages!: IPage[];
   @Input() type!: IDocumentType;
+  private zoom = inject(DocumentZoomService);
 
-  zoom = inject(DocumentZoomService);
+  currentWidth = this.zoom.currentWidth;
 
-  get imageSize() {
-    console.log(this.zoom.level);
-    return {
-      width: this.type.width * this.zoom.level,
-      height: this.type.height * this.zoom.level,
-    };
+  ngOnInit(): void {
+    this.zoom.init(this.type.width);
   }
 }
