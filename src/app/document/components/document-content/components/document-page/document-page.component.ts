@@ -1,8 +1,14 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  Input,
+} from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { IDocumentType, IPage } from '../../../../interfaces/document.model';
-import { DocumentNoteComponent } from '../../../document-note/document-note.component';
 import { TuiButton } from '@taiga-ui/core';
+import { DocumentNoteComponent } from './components/document-note/document-note.component';
+import { DocumentZoomService } from '../../../../services/document-zoom.service';
 
 @Component({
   selector: 'app-document-page',
@@ -14,5 +20,5 @@ import { TuiButton } from '@taiga-ui/core';
 })
 export class DocumentPageComponent {
   @Input() page!: IPage;
-  @Input() type!: IDocumentType;
+  @Input() imageSize!: IDocumentType;
 }

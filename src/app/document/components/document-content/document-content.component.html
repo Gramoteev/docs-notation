@@ -1,8 +1,8 @@
 @for (page of pages; track page) {
   <app-document-page
     class="page"
-    [style.max-width]="type.width"
+    [style.max-width]="imageSize.width"
     [page]="page"
-    [type]="type"
+    [imageSize]="imageSize"
   ></app-document-page>
 }

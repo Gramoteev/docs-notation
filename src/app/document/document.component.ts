@@ -7,10 +7,12 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { map, switchMap } from 'rxjs';
 import { IDocumentType } from './interfaces/document.model';
 import { DOCUMENT_TYPES } from './constants/document.constants';
+import { DocumentZoomService } from './services/document-zoom.service';
 
 @Component({
   selector: 'app-document',
   imports: [DocumentHeaderComponent, DocumentContentComponent],
+  providers: [DocumentZoomService],
   templateUrl: './document.component.html',
   styleUrl: './document.component.scss',
   standalone: true,
