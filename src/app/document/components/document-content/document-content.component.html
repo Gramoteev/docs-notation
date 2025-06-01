@@ -1,12 +1,12 @@
 @for (page of pages; track page) {
-  <div class="page">
+  <div class="page" [style.max-width]="type.width">
     <img
       ngSrc="{{ page.imageUrl }}"
       [alt]="page.number"
-      width="794"
-      height="1123"
+      [width]="type.width"
+      [height]="type.height"
       draggable="false"
     />
-    <app-document-note draggable="true"></app-document-note>
+    <app-document-note></app-document-note>
   </div>
 }

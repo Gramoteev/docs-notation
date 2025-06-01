@@ -5,7 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { DocumentService } from './services/document.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map, switchMap } from 'rxjs';
-import { DocumentNoteComponent } from './components/document-note/document-note.component';
+import { IDocumentType } from './interfaces/document.model';
+import { DOCUMENT_TYPES } from './constants/document.constants';
 
 @Component({
   selector: 'app-document',
@@ -24,4 +25,5 @@ export class DocumentComponent {
       switchMap((id) => this.documentService.getDocument(id)),
     ),
   );
+  protected readonly DOCUMENT_TYPES = DOCUMENT_TYPES;
 }

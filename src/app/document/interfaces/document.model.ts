@@ -15,3 +15,7 @@ export interface IAnnotation {
   y: number;
   pageIndex: number;
 }
+export interface IDocumentType {
+  width: number;
+  height: number;
+}

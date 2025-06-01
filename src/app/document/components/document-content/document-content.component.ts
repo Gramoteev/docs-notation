@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { IPage } from '../../interfaces/document.model';
+import { IDocumentType, IPage } from '../../interfaces/document.model';
 import { NgOptimizedImage } from '@angular/common';
 import { DocumentNoteComponent } from '../document-note/document-note.component';
 
@@ -13,4 +13,5 @@ import { DocumentNoteComponent } from '../document-note/document-note.component'
 })
 export class DocumentContentComponent {
   @Input() pages!: IPage[];
+  @Input() type!: IDocumentType;
 }
