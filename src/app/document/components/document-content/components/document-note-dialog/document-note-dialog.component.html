@@ -1,0 +1,5 @@
+<tui-textfield [style.margin-block-end.rem]="1">
+  <label tuiLabel>Text</label>
+  <textarea tuiTextarea [formControl]="control" [max]="6" [min]="3"></textarea>
+</tui-textfield>
+<button tuiButton type="button" (click)="submit()">Create</button>

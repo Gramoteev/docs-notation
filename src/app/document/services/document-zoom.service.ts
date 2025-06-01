@@ -20,6 +20,10 @@ export class DocumentZoomService {
     () => this.currentWidthSignal() - this.step >= this.baseWidth,
   );
 
+  public canScale = computed(
+    () => this.currentWidthSignal() < window.innerWidth,
+  );
+
   init(baseDocumentWidth: number) {
     this.baseWidth =
       window.innerWidth > baseDocumentWidth

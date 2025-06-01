@@ -5,9 +5,14 @@ import {
   ElementRef,
   HostBinding,
   inject,
-  signal,
+  Input,
+  ViewContainerRef,
 } from '@angular/core';
 import { DragService } from './services/drag/drag.service';
+import { signal } from '@angular/core';
+import { TuiButton } from '@taiga-ui/core';
+import { TuiButtonClose } from '@taiga-ui/kit';
+import { NotesService } from '../../../../../../services/notes.service';
 
 @Component({
   selector: 'app-document-note',
@@ -16,10 +21,16 @@ import { DragService } from './services/drag/drag.service';
   standalone: true,
   providers: [DragService],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [TuiButton, TuiButtonClose],
 })
 export class DocumentNoteComponent implements AfterViewInit {
+  @Input() content!: string;
+  @Input() viewContainerRef!: ViewContainerRef;
+  @Input() index!: number;
+
   private elementRef = inject(ElementRef);
   private dragService = inject(DragService);
+  private notesService = inject(NotesService);
 
   private position = signal<{ x: number; y: number }>({ x: 40, y: 20 });
 
@@ -40,5 +51,10 @@ export class DocumentNoteComponent implements AfterViewInit {
       .subscribe((position) => {
         this.position.set(position);
       });
+  }
+
+  remove() {
+    this.notesService.removeNote(this.index);
+    this.viewContainerRef.remove(this.index);
   }
 }

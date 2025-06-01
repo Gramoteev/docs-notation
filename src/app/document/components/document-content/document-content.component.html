@@ -1,5 +1,5 @@
 <div class="pages" [style.width]="currentWidth() + 'px'">
   @for (page of pages; track page) {
-    <app-document-page [page]="page" [imageSize]="type"></app-document-page>
+    <app-document-page [page]="page" [documentType]="type"></app-document-page>
   }
 </div>

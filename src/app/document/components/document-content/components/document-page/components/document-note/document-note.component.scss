@@ -1,5 +1,15 @@
 :host {
+  display: block;
   position: absolute;
+  max-width: 400px;
+  background: rgba(255, 207, 0, 0.4);
+  border-radius: 8px;
   cursor: move;
   user-select: none;
+  padding: 2px 4px;
+}
+.close {
+  position: absolute;
+  right: 80%;
+  bottom: 80%;
 }

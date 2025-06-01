@@ -3,10 +3,10 @@ import {
   Component,
   inject,
   Input,
+  OnInit,
 } from '@angular/core';
 import { IDocumentType, IPage } from '../../interfaces/document.model';
 import { DocumentPageComponent } from './components/document-page/document-page.component';
-import { toSignal } from '@angular/core/rxjs-interop';
 import { DocumentZoomService } from '../../services/document-zoom.service';
 
 @Component({
@@ -17,7 +17,7 @@ import { DocumentZoomService } from '../../services/document-zoom.service';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DocumentContentComponent {
+export class DocumentContentComponent implements OnInit {
   @Input() pages!: IPage[];
   @Input() type!: IDocumentType;
   private zoom = inject(DocumentZoomService);

@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { DocumentHeaderComponent } from './components/document-header/document-header.component';
 import { DocumentContentComponent } from './components/document-content/document-content.component';
 import { ActivatedRoute } from '@angular/router';

@@ -6,6 +6,7 @@
   iconStart="@tui.message-circle-plus"
   [style.color]="'var(--tui-text-tertiary)'"
   class="add-button"
+  (click)="addNote()"
 >
   Add note
 </button>
@@ -13,8 +14,8 @@
 <img
   ngSrc="{{ page.imageUrl }}"
   [alt]="page.number"
-  [width]="imageSize.width"
-  [height]="imageSize.height"
+  [width]="documentType.width"
+  [height]="documentType.height"
   draggable="false"
 />
-<app-document-note></app-document-note>
+<ng-container #container></ng-container>

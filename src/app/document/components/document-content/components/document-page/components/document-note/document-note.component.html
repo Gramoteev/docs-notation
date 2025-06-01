@@ -1,4 +1,11 @@
-<div class="note">
-  Заметка не должна вылезать за пределы контейнера (левый, правый, верхний,
-  нижний края).
-</div>
+<button
+  class="close"
+  size="xs"
+  tuiButtonClose
+  tuiIconButton
+  type="button"
+  (click)="remove()"
+>
+  Close
+</button>
+<div class="note">{{ content }}</div>
