@@ -1,0 +1,20 @@
+<button
+  tuiButton
+  appearance="flat"
+  size="xs"
+  type="button"
+  iconStart="@tui.message-circle-plus"
+  [style.color]="'var(--tui-text-tertiary)'"
+  class="add-button"
+>
+  Add note
+</button>
+
+<img
+  ngSrc="{{ page.imageUrl }}"
+  [alt]="page.number"
+  [width]="type.width"
+  [height]="type.height"
+  draggable="false"
+/>
+<app-document-note></app-document-note>

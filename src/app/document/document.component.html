@@ -1,5 +1,5 @@
 @if (document(); as doc) {
-  <app-document-header [name]="doc.name"></app-document-header>
+  <app-document-header class="header" [name]="doc.name"></app-document-header>
   <app-document-content
     [pages]="doc.pages"
     [type]="DOCUMENT_TYPES.A4"

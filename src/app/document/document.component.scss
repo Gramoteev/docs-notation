@@ -1,5 +1,10 @@
 :host {
   background: #cccccc;
   display: block;
-  padding-top: 66px;
+  padding: 66px 10px 10px;
+}
+
+.header {
+  z-index: 1000;
+
 }
