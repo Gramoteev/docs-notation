@@ -22,17 +22,14 @@ export class DocumentNoteDialogComponent {
 
   private fb = inject(FormBuilder);
 
-  form: FormGroup = this.fb.group({
+  protected form: FormGroup = this.fb.group({
     text: ['', [Validators.required, Validators.minLength(3)]],
   });
 
-  constructor() {
-    this.form.markAsTouched();
-  }
-
   protected submit(): void {
     if (this.form.valid) {
-      const text = this.form.get('text')?.value;
+      const { text } = this.form.value;
+
       if (text !== null) {
         this.context.completeWith(text);
       }

@@ -18,4 +18,10 @@
   [height]="documentType.height"
   draggable="false"
 />
-<ng-container #container></ng-container>
+@for (note of notes(); track note.id) {
+  <app-document-note
+    [content]="note.content"
+    [id]="note.id"
+    [page]="page.number"
+  ></app-document-note>
+}

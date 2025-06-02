@@ -34,6 +34,6 @@ export class DocumentHeaderComponent {
   }
 
   save() {
-    console.info({ name: this.name, addedNotes: this.notesService.getNotes() });
+    console.info({ name: this.name, addedNotes: this.notesService.notes() });
   }
 }

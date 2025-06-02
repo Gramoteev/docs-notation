@@ -1,25 +1,39 @@
-import { Injectable } from '@angular/core';
-
-export interface NoteData {
-  content: string;
-  page: number;
-}
+import { Injectable, signal, computed } from '@angular/core';
+import { NoteData } from '../interfaces/notes.model';
 
 @Injectable({ providedIn: 'root' })
 export class NotesService {
-  private notes: NoteData[] = [];
+  private readonly notesMap = signal(new Map<number, NoteData[]>());
 
-  addNote(note: NoteData) {
-    this.notes.push(note);
+  readonly notes = computed(() => this.notesMap());
+
+  getNotesForPage = computed(
+    () =>
+      (page: number): NoteData[] =>
+        this.notesMap().get(page) ?? [],
+  );
+
+  addNote(page: number, content: string): void {
+    const current = new Map(this.notesMap());
+    const notes = current.get(page) ?? [];
+
+    const note: NoteData = {
+      id: crypto.randomUUID(),
+      content,
+    };
+
+    current.set(page, [...notes, note]);
+    this.notesMap.set(current);
   }
 
-  removeNote(index: number) {
-    if (index >= 0 && index < this.notes.length) {
-      this.notes.splice(index, 1);
-    }
-  }
+  removeNote(page: number, id: string): void {
+    const current = new Map(this.notesMap());
+    const notes = current.get(page);
 
-  getNotes(): NoteData[] {
-    return this.notes;
+    if (!notes) return;
+
+    const updated = notes.filter((note) => note.id !== id);
+    current.set(page, updated);
+    this.notesMap.set(current);
   }
 }
